@@ -20,8 +20,7 @@ Stack::Stack() : _values_counter(0)
 //Деструктор
 Stack::~Stack()
 {
-    if (_ptr_stack_values)
-        delete[] _ptr_stack_values;
+    delete[] _ptr_stack_values;
 }
 
 //Добавление элемента в стек
