@@ -102,7 +102,7 @@ int main()
 //
 //class Сroupier
 //        vector<Card> Shoe
-//        ShoeGenerator
+//        ShoeGenerator()
 //        vector<Card> Cards
 //        vector<Chip> Bank
 //
