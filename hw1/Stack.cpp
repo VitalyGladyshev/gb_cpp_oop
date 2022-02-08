@@ -60,10 +60,9 @@ void Stack::reset()
 //Печать элементов стека
 void Stack::print()
 {
+    cout << "\t( ";
     if (_values_counter)
-    {
         for (int i = 0; i < _values_counter; i++)
-            cout << "\t" <<  _ptr_stack_values[i] << endl;
-        cout << endl;
-    }
+            cout <<  _ptr_stack_values[i] << " ";
+    cout << ")" << endl;
 }

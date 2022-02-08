@@ -6,19 +6,19 @@
 #define GB_CPP_OOP_POWER_H
 
 // Задание 1
-// Класс реализует функционал операции умножение
+// Класс реализует функционал операции возведение в степень
 class Power {
 private:
-    float _operand_1;   //Операнд операции умножение
-    float _operand_2;   //Операнд операции умножение
+    float _basis;       //Основание
+    float _exponent;    //Степень
 
 public:
     //Конструктор
-    Power(const float operand_1 = 0, const float operand_2 = 0);
+    Power(const float basis = 0, const float exponent = 0);
 
-    //Задание членов класса - опреандов операции умножение
-    void set(const float operand_1 = 0, const float operand_2 = 0);
-    //Вычисление операции: умножение
+    //Задание членов класса - основание, степень
+    void set(const float basis = 0, const float exponent = 0);
+    //Вычисление операции: возведение в степень
     float calculate() const;
     //Печать операндов и результата
     void print() const;

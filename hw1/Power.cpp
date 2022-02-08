@@ -4,31 +4,32 @@
 
 #include "Power.h"
 
+#include <cmath>
 #include <iostream>
 
 using namespace std;
 
 //Конструктор
-Power::Power(const float operand_1, const float operand_2)
-    : _operand_1(operand_1), _operand_2(operand_2)
+Power::Power(const float basis, const float exponent)
+    : _basis(basis), _exponent(exponent)
 {
 }
 
-//Задание членов класса - опреандов операции умножение
-void Power::set(const float operand_1, const float operand_2)
+//Задание членов класса - основание, степень
+void Power::set(const float basis, const float exponent)
 {
-    _operand_1 = operand_1;
-    _operand_2 = operand_2;
+    _basis = basis;
+    _exponent = exponent;
 }
 
-//Вычисление операции: умножение
+//Вычисление операции: возведение в степень
 float Power::calculate() const
 {
-    return _operand_1 * _operand_2;
+    return pow(_basis, _exponent);
 }
 
 //Печать операндов и результата
 void Power::print() const
 {
-    cout << "\t" << _operand_1 << " * " << _operand_2 << " = " << calculate() << endl;
+    cout << "\t" << _basis << " ^ " << _exponent << " = " << calculate() << endl;
 }

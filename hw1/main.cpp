@@ -17,11 +17,14 @@ int main()
     setlocale(LC_ALL, "Russian");
 // Задание 1
     cout << "Задание 1" << endl;
-    Power multiplication_operation(5);
-    multiplication_operation.print();
+    Power power_operation(5);
+    power_operation.print();
 
-    multiplication_operation.set(4, 7);
-    multiplication_operation.print();
+    power_operation.set(2, 7);
+    power_operation.print();
+
+    power_operation.set(3, 3);
+    power_operation.print();
 
 // Задание 2
     cout << "\nЗадание 2" << endl;
@@ -41,11 +44,11 @@ int main()
     stack.push(7);
     stack.push(5);
     stack.print();
+
     stack.pop();
     stack.print();
+
     stack.pop();
-    stack.pop();
-    stack.print();
     stack.pop();
     stack.print();
 
