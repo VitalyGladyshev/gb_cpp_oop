@@ -1,5 +1,7 @@
 //
 // Created by Гладышев ВВ on 08.02.2022.
+// ООП на примере C++
+// ДЗ к уроку 2 Наследование
 //
 
 #include <iostream>
@@ -11,42 +13,104 @@ class Person
 {
 public:
     //Конструктор
-    Person(string name, int age, int sex, int weight) :
-            _Name(name), _Age(age), _Sex(sex), _Weight(weight) {}
+    Person(string name, int age, string sex, int weight) :
+            _name(name), _age(age), _sex(sex), _weight(weight) {}
 
     //Установка имени
-    void SetName(string name) { _Name = name; }
+    void SetName(string name) { _name = name; }
     //Установка возраста
-    void SetAge(int age) { _Age = age; }
+    void SetAge(int age) { _age = age; }
     //Установка веса
-    void SetWeight(int weight) { _Weight = weight; }
+    void SetWeight(int weight) { _weight = weight; }
 
-private:
-    string _Name;	//Имя
-    int _Age;		//Возраст
-    int _Sex;		//Пол
-    int _Weight;	//Вес
+protected:
+    string _name;	//Имя
+    int _age;		//Возраст
+    string _sex;	//Пол
+    int _weight;	//Вес
 };
 
 //Класс Студент
-class Student
+class Student : public Person
 {
 public:
     //Конструктор
-    Student() {}
+    Student(string name, int age, string sex, int weight, int study_year = 1) : Person(name, age, sex, weight),
+        _study_year(study_year) { _id = _student_index++; }
+
+    //Установка года обучения
+    void SetStudyYear(int study_year) { _study_year = study_year; }
+    //Установка года обучения
+    int SetStudyYearIncrement() { return ++_study_year; }
+    //Печать информации о студенте
+    void print() const;
 
 private:
-
+    int _study_year;            //Год обучения
+    int _id;                    //id студента
+    static int _student_index;  //Индекс студента
 };
+
+int Student::_student_index = 0;
+
+void Student::print() const
+{
+    cout << "\tСтудент: " << _name << endl;
+    cout << "\t\tid: " << _id << endl;
+    cout << "\t\tвозраст: " << _age << endl;
+    cout << "\t\tпол: " << _sex << endl;
+    cout << "\t\tвес: " << _weight << " кг." << endl;
+    cout << "\t\tгод обучения: " << _study_year << endl << endl;;
+}
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 // Задание 1
+    cout << "Задание 1" << endl;
+    Student student_pet("Петя", 18, "мужской", 65);
+    Student student_vas("Вася", 20, "мужской", 75, 2);
+    Student student_sen("Сеня", 21, "мужской", 80, 2);
+    student_pet.print();
+    student_vas.print();
+    student_sen.SetStudyYearIncrement();
+    student_sen.SetStudyYearIncrement();
+    student_sen.print();
 
 // Задание 2
+    cout << "Задание 2" << endl;
 
-// Задание 3
+//    Apple a("red");
+//    Banana b;
+//    GrannySmith c;
+//
+//    std::cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
+//    std::cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
+//    std::cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
 
     return 0;
+
+// Задание 3
+//Игра Blackjack
+//class Card
+//        масть
+//        тип
+//        количество очков
+//
+//class Сhip
+//        номинал
+//
+//class Сroupier
+//        vector<Card> Shoe
+//        ShoeGenerator
+//        vector<Card> Cards
+//        vector<Chip> Bank
+//
+//class Player
+//        vector<Card> Cards
+//        vector<Chip> Chips
+//        vector<Chip> Bet
+//
+//class Shuffle : Сroupier
+//        vector<Player> Players
 }
