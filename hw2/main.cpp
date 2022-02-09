@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Задание 1
 //Класс Человек
 class Person
 {
@@ -63,6 +64,51 @@ void Student::print() const
     cout << "\t\tгод обучения: " << _study_year << endl << endl;;
 }
 
+//Задание 2
+//Класс Фрукт
+class Fruit
+{
+public:
+    //Получить имя
+    string getName() const { return _name; }
+    //Получить цвет
+    string getColor() const { return _color; }
+
+protected:
+    //Конструктор
+    Fruit(string name, string color) : _name(name), _color(color) {};
+
+    const string _name;   //Имя
+    const string _color;  //Цвет
+};
+
+//Класс Яблоко
+class Apple : public Fruit
+{
+protected:
+    //Конструктор для цепочки наследования
+    Apple(string name, string color) : Fruit(name, color) {};
+public:
+    //Конструктор
+    Apple(string color = "красное") : Fruit("Яблоко", color) {};
+};
+
+//Класс Банан
+class Banana : public Fruit
+{
+public:
+    //Конструктор
+    Banana(string color = "желтый") : Fruit("Банан", color) {};
+};
+
+//Класс Яблоко ГрениСмит
+class GrannySmith : public Apple
+{
+public:
+    //Конструктор
+    GrannySmith(string color = "зелёный") : Apple("ГрениСмит", color) {};
+};
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -80,13 +126,13 @@ int main()
 // Задание 2
     cout << "Задание 2" << endl;
 
-//    Apple a("red");
-//    Banana b;
-//    GrannySmith c;
-//
-//    std::cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
-//    std::cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
-//    std::cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
+    Apple a("red");
+    Banana b;
+    GrannySmith c;
+
+    std::cout << "\tMy " << a.getName() << " is " << a.getColor() << ".\n";
+    std::cout << "\tMy " << b.getName() << " is " << b.getColor() << ".\n";
+    std::cout << "\tMy " << c.getName() << " is " << c.getColor() << ".\n";
 
     return 0;
 
