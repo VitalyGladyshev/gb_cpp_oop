@@ -19,9 +19,6 @@ using namespace std;
 class Figure
 {
 public:
-    //Конструктор
-    //Figure();
-
     //Площадь
     virtual float area() = 0;
 };
