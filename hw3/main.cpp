@@ -158,6 +158,78 @@ public:
 };
 
 //Задание 3
+//Класс Дробь
+class Fraction
+{
+private:
+    int _numerator;     //числитель
+    int _denominator;   //знаменатель
+
+public:
+    //Коррекция знака дроби
+    void FractionSignCheck()
+    {
+        if (_denominator < 0)
+        {
+            if (_numerator < 0)
+                _numerator = abs(_numerator);
+            else
+                _numerator *= -1;
+
+            _denominator = abs(_denominator);
+        }
+    }
+    //Распечатать дробь
+    string ToString()
+    {
+        return to_string(_numerator) + "/" + to_string(_denominator);
+    }
+
+    //Конструктор
+    Fraction(int numerator, int denominator) : _numerator(numerator), _denominator(denominator)
+    {
+        FractionSignCheck();
+        if (!denominator)
+        {
+            _denominator = 1;
+            cout << "\tЗнаменатель не может быть ревен нулю!" << endl;
+            cout << "\tЗнаменатель установлен в 1!!!" << endl;
+            cout << "\tДробь: " << ToString() << endl;
+            cout << "\tЗадайте корректное значение - натуральное число!" << endl << endl;
+        }
+    }
+
+    //Получить числитель
+    int GetNumerator()
+    {
+        return _numerator;
+    }
+    //Задать числитель
+    void SetNumerator(int numerator)
+    {
+        _numerator = numerator;
+        FractionSignCheck();
+    }
+    //Получить знаменатель
+    int GetDenominator()
+    {
+        return _denominator;
+    }
+    //Задать знаменатель
+    void SetDenominator(int denominator)
+    {
+        if (!denominator)
+        {
+            _denominator = 1;
+            cout << "\tЗнаменатель не может быть ревен нулю! Знаменатель установлен в 1!!! Задайте корректное значение - натуральное число!" << endl;
+        }
+        else
+        {
+            _denominator = denominator;
+            FractionSignCheck();
+        }
+    }
+};
 
 //Задание 4
 //BlackJack Класс Card
@@ -282,6 +354,8 @@ int main() {
 // Задание 3
     cout << "Задание 3" << endl;
 
+    Fraction fraction_1(3, 0);
+    cout << "\tДробь: " << fraction_1.ToString() << endl;
     cout << endl;
 
 // Задание 4
