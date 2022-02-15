@@ -120,7 +120,7 @@ public:
     //Конструктор
     Car(string company, string model) : _company(company), _model(model)
     {
-        cout << "Компания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
+        cout << "\tКомпания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
     }
 };
 
@@ -131,7 +131,7 @@ public:
     //Конструктор
     PassengerCar(string company, string model) : Car(company, model)
     {
-        cout << "Компания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
+        cout << "\tКомпания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
     }
 };
 
@@ -142,7 +142,7 @@ public:
     //Конструктор
     Bus(string company, string model) : Car(company, model)
     {
-        cout << "Компания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
+        cout << "\tКомпания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
     }
 };
 
@@ -153,7 +153,7 @@ public:
     //Конструктор
     Minivan(string company, string model) : PassengerCar(company, model), Bus(company, model), Car(company, model)
     {
-        cout << "Компания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
+        cout << "\tКомпания: " << _company << " модель: " << _model << " (" << __FUNCSIG__ << ")" << endl;
     }
 };
 
@@ -228,6 +228,63 @@ public:
             _denominator = denominator;
             FractionSignCheck();
         }
+    }
+    //Прегружаем оператор +
+    friend Fraction operator+ (const Fraction& fr1, const Fraction& fr2)
+    {
+        return Fraction(fr1._numerator*fr2._denominator + fr2._numerator*fr1._denominator,
+                        fr1._denominator*fr2._denominator);
+    }
+    //Прегружаем оператор бинарный -
+    friend Fraction operator- (const Fraction& fr1, const Fraction& fr2)
+    {
+        return Fraction(fr1._numerator*fr2._denominator - fr2._numerator*fr1._denominator,
+                        fr1._denominator*fr2._denominator);
+    }
+    //Прегружаем оператор унарный -
+    Fraction operator- () const
+    {
+        return Fraction(-_numerator, _denominator);
+    }
+    //Прегружаем оператор *
+    friend Fraction operator* (const Fraction& fr1, const Fraction& fr2)
+    {
+        return Fraction(fr1._numerator*fr2._numerator,fr1._denominator*fr2._denominator);
+    }
+    //Прегружаем оператор /
+    friend Fraction operator/ (const Fraction& fr1, const Fraction& fr2)
+    {
+        return Fraction(fr1._numerator*fr2._denominator,fr1._denominator*fr2._numerator);
+    }
+    //Прегружаем оператор ==
+    friend bool operator== (const Fraction& fr1, const Fraction& fr2)
+    {
+        return (fr1._numerator == fr2._numerator && fr1._denominator == fr2._denominator);
+    }
+    //Прегружаем оператор !=
+    friend bool operator!= (const Fraction& fr1, const Fraction& fr2)
+    {
+        return (fr1._numerator != fr2._numerator && fr1._denominator != fr2._denominator);
+    }
+    //Прегружаем оператор <
+    friend bool operator< (const Fraction& fr1, const Fraction& fr2)
+    {
+        return ((fr1 - fr2)._numerator < 0);
+    }
+    //Прегружаем оператор >
+    friend bool operator> (const Fraction& fr1, const Fraction& fr2)
+    {
+        return ((fr1 - fr2)._numerator > 0);
+    }
+    //Прегружаем оператор <=
+    friend bool operator<= (const Fraction& fr1, const Fraction& fr2)
+    {
+        return ((fr1 - fr2)._numerator <= 0);
+    }
+    //Прегружаем оператор >=
+    friend bool operator>= (const Fraction& fr1, const Fraction& fr2)
+    {
+        return ((fr1 - fr2)._numerator >= 0);
     }
 };
 
@@ -354,8 +411,37 @@ int main() {
 // Задание 3
     cout << "Задание 3" << endl;
 
-    Fraction fraction_1(3, 0);
-    cout << "\tДробь: " << fraction_1.ToString() << endl;
+    Fraction fraction_1(2, 0);
+    fraction_1.SetDenominator(3);
+    cout << "\tДробь 1: " << fraction_1.ToString() << endl;
+    Fraction fraction_2(1, 3);
+    cout << "\tДробь 2: " << fraction_2.ToString() << endl << endl;
+    cout << "\tСумма: " << (fraction_1+fraction_2).ToString() << endl;
+    cout << "\tРазность " << fraction_1.ToString() << " - " << fraction_2.ToString() << ": " << \
+        (fraction_1-fraction_2).ToString() << endl;
+    cout << "\tРазность " << fraction_2.ToString() << " - " << fraction_1.ToString() << ": " << \
+        (fraction_2-fraction_1).ToString() << endl;
+    cout << "\tПроизведение: " << (fraction_1*fraction_2).ToString() << endl;
+    cout << "\tОтношение: " << (fraction_1/fraction_2).ToString() << endl;
+    cout << "\tУнарный минус: " << (-fraction_1).ToString() << endl << endl;
+    cout << "\t" << fraction_1.ToString() << " == " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 == fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " != " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 != fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " < " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 < fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " > " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 > fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " <= " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 <= fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " >= " <<  fraction_2.ToString() << ": " << boolalpha << \
+        (fraction_1 >= fraction_2) << endl;
+    cout << "\t" << fraction_1.ToString() << " == " <<  fraction_1.ToString() << ": " << boolalpha << \
+        (fraction_1 == fraction_1) << endl;
+    cout << "\t" << fraction_1.ToString() << " <= " <<  fraction_1.ToString() << ": " << boolalpha << \
+        (fraction_1 <= fraction_1) << endl;
+    cout << "\t" << fraction_1.ToString() << " >= " <<  fraction_1.ToString() << ": " << boolalpha << \
+        (fraction_1 >= fraction_1) << endl;
     cout << endl;
 
 // Задание 4
