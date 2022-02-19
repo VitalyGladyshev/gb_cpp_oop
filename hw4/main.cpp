@@ -7,9 +7,9 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+#include "arrayint.h"
 
-//Задание 1
+using namespace std;
 
 //Задание 2
 
@@ -20,6 +20,21 @@ int main()
     setlocale(LC_ALL, "Russian");
 // Задание 1
     cout << "Задание 1" << endl;
+    ArrayInt array(0);
+
+    for (auto el : {12, 45, 32, 67, 54, 89, 54, 21})
+        array.push_back(el);
+    array.print();
+
+    array.sort();
+    array.print();
+
+    array.pop_front();
+    array.pop_back();
+    array.print();
+
+    array.erase();
+    array.print();
 
     cout << endl;
 
