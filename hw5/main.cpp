@@ -7,8 +7,6 @@
 #include <iostream>
 #include <vector>
 
-#include "GenericPlayer.h"
-
 using namespace std;
 
 //Класс
@@ -60,11 +58,6 @@ int main()
 
 //    StringValuePair<int> svp("Amazing", 7);
 //    cout << "\tPair: " << svp.first() << ' ' << svp.second() << endl;
-
-    cout << endl;
-
-// Задание 4
-    cout << "Задание 4" << endl;
 
     cout << endl;
 

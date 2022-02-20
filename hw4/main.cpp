@@ -152,8 +152,18 @@ int main()
     cout << "\tКарты на руке:" << endl;
     hand.PrintHand();
     cout << endl << "\tВсего очков: " << hand.GetTotal();
+    cout << endl << endl;
+
+    Card* card_4  = new Card(Card::Suit::Clubs, Card::Value::Two);
+    Card* card_5  = new Card(Card::Suit::Hearts, Card::Value::Five);
+
+    Hand hand_2 { card_2, card_4, card_5 };
+
+    cout << "\tКарты на руке:" << endl;
+    hand_2.PrintHand();
+    cout << endl << "\tВсего очков: " << hand_2.GetTotal();
     cout << endl;
 
-    for (auto card: {card_1, card_2, card_3})
+    for (auto card: {card_1, card_2, card_3, card_4, card_5})
         delete card;
 }

@@ -64,20 +64,23 @@ public:
     {
         return _suitNames[static_cast<int>(_suit)];
     }
-    //Возвращаем значеие карты
+    //Возвращаем значение карты
     Value GetValue()
     {
         return _value;
     }
     //Возвращаем название значения карты
-    string GetValuetName()
+    string GetValueName()
     {
         return _valueNames[static_cast<int>(_value)];
     }
     //Возвращаем очки карты
     int GetValueScore()
     {
-        return _valueScore[static_cast<int>(_value)];
+        if (_shirtUp)
+            return _valueScore[static_cast<int>(_value)];
+        else
+            return 0;
     }
 };
 

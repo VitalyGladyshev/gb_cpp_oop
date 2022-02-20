@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#include "Card.h"
 #include "Hand.h"
 
 //Конструктор
@@ -24,9 +25,29 @@ void Hand::Clear()
 //Возвращает сумму очков карт руки
 int Hand::GetTotal()
 {
+    //Карта рубашкой вверх
+    if (!_cards[0]->GetValueScore())
+         return 0;
+
     int score = 0;
+    bool containsAce = false;   // определяет, держит ли рука туз
+
     for (auto card : _cards)
+    {
         score += card->GetValueScore();
+        if (card->GetValue() == Card::Value::Ace)
+        {
+            containsAce = true;
+        }
+    }
+
+    // если рука держит туз и сумма довольно маленькая, туз дает 11 очков
+    if (containsAce && score <= 11)
+    {
+        // добавляем только 10 очков, поскольку мы уже добавили за каждый туз по одному очку
+        score += 10;
+    }
+
     return score;
 }
 
@@ -35,6 +56,6 @@ void Hand::PrintHand()
 {
     int score = 0;
     for (auto card : _cards)
-        cout << "\t\t" << card->GetValuetName() << " " << card->GetSuitName() << " - " << card->GetValueScore()  << \
+        cout << "\t\t" << card->GetValueName() << " " << card->GetSuitName() << " - " << card->GetValueScore()  << \
             " очков" << endl;
 }

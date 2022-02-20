@@ -22,9 +22,6 @@ Card::Card(Suit suit, Value value, bool shirtUp) :
 //Открываем карту
 bool Card::Flip()
 {
-    if (_shirtUp)
-        _shirtUp = false;
-    else
-        _shirtUp = true;
+    _shirtUp = !_shirtUp;
     return _shirtUp;
 }

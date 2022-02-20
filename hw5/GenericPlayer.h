@@ -8,16 +8,23 @@
 #include "..\hw4\Card.h"
 #include "..\hw4\Hand.h"
 
-//BlackJack Класс - игрок
-class GenericPlayer
+//BlackJack Обобщенный класс - игрок
+class GenericPlayer : public Hand
 {
 private:
-
+    string _name;   //Имя игрока
+    bool _boosted;  //Флаг перебор
 
 public:
     //Конструктор
-    GenericPlayer();
+    GenericPlayer(string name, initializer_list<Card*> cards): Hand(cards), _name(name), _boosted(false) {}
 
+    //Указывает, нужна ли игроку еще одна карта. Чистая виртуальная функция
+    virtual bool IsHitting() const = 0;
+    //Указывает, что у игрока перебор
+    bool IsBoosted();
+    //Объявляет, что у игрока перебор
+    void Bust();
 };
 
 
