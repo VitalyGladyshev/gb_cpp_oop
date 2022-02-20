@@ -99,7 +99,7 @@ int ArrayInt::pop_back()
     if (m_length)
     {
         int last = m_data[m_length-1];
-        int* new_data = new int[m_length-2];
+        int* new_data = new int[m_length-1];
 
         for (int i = 0; i < m_length-1; i++)
             new_data[i] = m_data[i];
@@ -119,7 +119,7 @@ int ArrayInt::pop_front()
     if (m_length)
     {
         int first = m_data[0];
-        int* new_data = new int[m_length-2];
+        int* new_data = new int[m_length-1];
 
         for (int i = 1; i < m_length; i++)
             new_data[i-1] = m_data[i];

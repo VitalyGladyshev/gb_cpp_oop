@@ -43,20 +43,36 @@ public:
 
             for (int i = 1; i < _lenght; i++)
             {
+                currentNode = _nodes[0];
                 while (true)
                 {
                     if (_sourceArray[i] == *(currentNode->pValue))
                         break;
                     if (_sourceArray[i] > *(currentNode->pValue))
-                        currentNode = currentNode->pGreaterNode;
-                    else
-                        currentNode = currentNode->pLessNode;
-                    if (currentNode == nullptr)
                     {
-                        currentNode = new Node;
-                        currentNode->pValue = _sourceArray + i;
-                        _nodes.push_back(currentNode);
-                        break;
+                        if (currentNode->pGreaterNode != nullptr)
+                            currentNode = currentNode->pGreaterNode;
+                        else
+                        {
+                            Node* nextNode = new Node;
+                            nextNode->pValue = _sourceArray + i;
+                            _nodes.push_back(nextNode);
+                            currentNode->pGreaterNode = nextNode;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (currentNode->pLessNode != nullptr)
+                            currentNode = currentNode->pLessNode;
+                        else
+                        {
+                            Node* nextNode = new Node;
+                            nextNode->pValue = _sourceArray + i;
+                            _nodes.push_back(nextNode);
+                            currentNode->pLessNode = nextNode;
+                            break;
+                        }
                     }
                 }
             }
@@ -115,11 +131,10 @@ int main()
 
 // Задание 2
     cout << "Задание 2" << endl;
-    vector<int> arrayForUnique {45, 76, 65, 87, 43, 76, 23 ,78, 45, 90, 45, 65};
+    vector<int> arrayForUnique {45, 76, 65, 87, 43, 76, 23 ,78, 45, 90, 45, 65, 90, 76, 54, 67};
     BinTree tree(arrayForUnique);
     tree.print();
-    cout << "\tУникальных элементов: " << tree.GetUniqueCounter();
-
+    cout << "\tУникальных элементов: " << tree.GetUniqueCounter() << endl;
     cout << endl;
 
 // Задание 3
