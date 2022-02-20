@@ -12,7 +12,82 @@
 using namespace std;
 
 //Задание 2
+//Класс бинарного поиска
+class BinTree
+{
+private:
+    //Узел дерева бинарного поиска
+    struct Node
+    {
+        int* pValue;        //Указатель на значение узла
+        Node* pLessNode;    //Указатель на узел меньший по значению
+        Node* pGreaterNode; //Указатель на узел больший по значению
 
+        //Конструктор
+        Node(): pValue(nullptr), pLessNode(nullptr),  pGreaterNode(nullptr) {}
+    };
+
+    vector<Node*> _nodes;   //Массив узлов дерева
+    int* _sourceArray;      //Массив значений для построения дерева
+    int _lenght;            //Длина массива значений
+
+public:
+    //Конструктор
+    BinTree(vector<int>& sourceVector) : _sourceArray(sourceVector.data()), _lenght(sourceVector.size())
+    {
+        if (_lenght)
+        {
+            Node* currentNode = new Node;
+            currentNode->pValue = _sourceArray;
+            _nodes.push_back(currentNode);
+
+            for (int i = 1; i < _lenght; i++)
+            {
+                while (true)
+                {
+                    if (_sourceArray[i] == *(currentNode->pValue))
+                        break;
+                    if (_sourceArray[i] > *(currentNode->pValue))
+                        currentNode = currentNode->pGreaterNode;
+                    else
+                        currentNode = currentNode->pLessNode;
+                    if (currentNode == nullptr)
+                    {
+                        currentNode = new Node;
+                        currentNode->pValue = _sourceArray + i;
+                        _nodes.push_back(currentNode);
+                        break;
+                    }
+                }
+            }
+        }
+
+    }
+    //Деструктор
+    ~BinTree()
+    {
+        for (auto node : _nodes)
+            delete node;
+    }
+
+    //Получить количество уникальных значений
+    int GetUniqueCounter()
+    {
+        return _nodes.size();
+    }
+    //Вывод на экран элементов
+    void print()
+    {
+        cout << "\t{ ";
+        if (_lenght)
+        {
+            for (int i = 0; i < _lenght-1; i++)
+                cout << _sourceArray[i] << ", ";
+            cout << _sourceArray[_lenght-1] << " ";
+        }
+        cout << "}" << endl;
+    }
+};
 //Задание 3
 
 int main()
@@ -40,6 +115,10 @@ int main()
 
 // Задание 2
     cout << "Задание 2" << endl;
+    vector<int> arrayForUnique {45, 76, 65, 87, 43, 76, 23 ,78, 45, 90, 45, 65};
+    BinTree tree(arrayForUnique);
+    tree.print();
+    cout << "\tУникальных элементов: " << tree.GetUniqueCounter();
 
     cout << endl;
 
