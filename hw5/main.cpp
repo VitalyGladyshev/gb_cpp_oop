@@ -52,7 +52,7 @@ public:
     }
 };
 
-//Класс
+//Класс специализированная пара
 template<typename T>
 class StringValuePair : public Pair<string, T>
 {
