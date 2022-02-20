@@ -8,6 +8,8 @@
 #include <vector>
 
 #include "arrayint.h"
+#include "Card.h"
+#include "Hand.h"
 
 using namespace std;
 
@@ -140,5 +142,18 @@ int main()
 // Задание 3
     cout << "Задание 3" << endl;
 
+    Card* card_1  = new Card(Card::Suit::Clubs, Card::Value::Eight);
+    Card* card_2  = new Card(Card::Suit::Diamonds, Card::Value::Ace);
+    Card* card_3  = new Card(Card::Suit::Hearts, Card::Value::Queen);
 
+    Hand hand { card_1, card_2 };
+    hand.Add(card_3);
+
+    cout << "\tКарты на руке:" << endl;
+    hand.PrintHand();
+    cout << endl << "\tВсего очков: " << hand.GetTotal();
+    cout << endl;
+
+    for (auto card: {card_1, card_2, card_3})
+        delete card;
 }

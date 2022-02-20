@@ -9,6 +9,7 @@
 
 using namespace std;
 
+
 //Конструктор
 ArrayInt::ArrayInt(int length): m_length(length)
 {

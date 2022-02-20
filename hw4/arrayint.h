@@ -7,6 +7,7 @@
 
 #include <cassert> // для assert()
 
+
 //Класс контейнера целых чисел
 class ArrayInt
 { private:
