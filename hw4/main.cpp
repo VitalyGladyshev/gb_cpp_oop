@@ -160,7 +160,7 @@ int main()
     Hand hand_2 { card_2, card_4, card_5 };
 
     cout << "\tКарты на руке:" << endl;
-    hand_2.PrintHand();
+    hand_2.PrintHand(cout);
     cout << endl << "\tВсего очков: " << hand_2.GetTotal();
     cout << endl;
 

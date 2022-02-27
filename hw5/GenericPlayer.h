@@ -8,6 +8,8 @@
 #include "..\hw4\Card.h"
 #include "..\hw4\Hand.h"
 
+#include <iostream>
+
 //BlackJack Обобщенный класс - игрок
 class GenericPlayer : public Hand
 {

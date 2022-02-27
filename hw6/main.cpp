@@ -7,6 +7,10 @@
 #include <iostream>
 #include <sstream>
 
+#include "..\hw4\Card.h"
+#include "..\hw4\Hand.h"
+#include "..\hw6\Player.h"
+
 using namespace std;
 
 //Манипулятор вывода двойного перевода строки
@@ -60,4 +64,15 @@ int main()
     cout << "Задание 2" << endl;
     cout << "\tМанипулятор endll - двойной перевод строки" << endll;
     cout << "\tНовая строка!" << endll;
+
+// Задания 3-5
+    cout << "Задания 3-5" << endl;
+
+    Card* card_1  = new Card(Card::Suit::Clubs, Card::Value::Eight);
+    Card* card_2  = new Card(Card::Suit::Diamonds, Card::Value::Ace);
+    Card* card_3  = new Card(Card::Suit::Hearts, Card::Value::Queen);
+
+    Player player("Вася", {card_1, card_2, card_3}) ;
+    cout << player;
+    cout << endl;
 }

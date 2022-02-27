@@ -5,6 +5,8 @@
 #ifndef GB_CPP_OOP_PLAYER_H
 #define GB_CPP_OOP_PLAYER_H
 
+#include<ostream>
+
 #include "..\hw4\Card.h"
 #include "..\hw4\Hand.h"
 
@@ -27,6 +29,8 @@ public:
     void Bust();
     //Возвращает имя игрока
     string GetName() const;
+    //Перегрузка оператора вывода
+    friend ostream& operator<< (ostream& os, const GenericPlayer& aGenericPlayer);
 };
 
 //Класс Игрок

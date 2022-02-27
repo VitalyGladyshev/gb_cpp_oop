@@ -87,10 +87,11 @@ public:
     friend ostream& operator<< (ostream& os, const Card& aCard)
     {
         if (aCard._shirtUp)
-            os << "\tXX" << endl;
+            os << "\t\tXX" << endl;
         else
             os << "\t\t" << aCard.GetValueName() << " " << aCard.GetSuitName() << " - " << aCard.GetValueScore()  << \
-            " очков" << endl;
+                " очков" << endl;
+        return os;
     }
 };
 

@@ -60,6 +60,15 @@ void Hand::PrintHand()
             " очков" << endl;
 }
 
+//Распечатать карты на руке в поток
+void Hand::PrintHand(ostream& os) const
+{
+    int score = 0;
+    for (auto card : _cards)
+        os << "\t\t" << card->GetValueName() << " " << card->GetSuitName() << " - " << card->GetValueScore()  << \
+            " очков" << endl;
+}
+
 //Перевернуть карту
 bool Hand::FlipCardNumber(int cardNumber)
 {

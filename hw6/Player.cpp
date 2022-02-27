@@ -30,6 +30,15 @@ string GenericPlayer::GetName() const
     return _name;
 }
 
+//Перегрузка оператора вывода
+ostream& operator<< (ostream& os, const GenericPlayer& aGenericPlayer)
+{
+    os << "\tИгрок " << aGenericPlayer._name << ":" << endl;
+    aGenericPlayer.PrintHand(os);
+    os << "\tВсего очков: " << aGenericPlayer.GetTotal() << endl << endl;
+    return os;
+}
+
 //Конструктор
 Player::Player(string name, initializer_list<Card*> cards) : GenericPlayer(name, cards) {}
 
@@ -75,6 +84,7 @@ bool House::IsHitting() const
 {
     return (Hand::GetTotal() <= 16);
 }
+
 //Метод переворачивает первую карту дилера
 void House::FlipFirstCard()
 {

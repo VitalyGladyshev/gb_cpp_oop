@@ -5,6 +5,8 @@
 #ifndef GB_CPP_OOP_HAND_H
 #define GB_CPP_OOP_HAND_H
 
+#include <iostream>
+
 #include "Card.h"
 
 //BlackJack Класс - рука
@@ -24,6 +26,8 @@ public:
     int GetTotal() const;
     //Распечатать карты на руке
     void PrintHand();
+    //Распечатать карты на руке в поток
+    void PrintHand(ostream& os) const;
     //Перевернуть карту
     bool FlipCardNumber(int cardNumber);
 };
