@@ -21,9 +21,11 @@ public:
     //Очищает руку от карт.
     void Clear();
     //Возвращает сумму очков карт руки
-    int GetTotal();
+    int GetTotal() const;
     //Распечатать карты на руке
     void PrintHand();
+    //Перевернуть карту
+    bool FlipCardNumber(int cardNumber);
 };
 
 

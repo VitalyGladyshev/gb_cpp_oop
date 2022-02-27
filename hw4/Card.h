@@ -7,6 +7,7 @@
 
 #include<vector>
 #include<string>
+#include<ostream>
 
 using namespace std;
 
@@ -60,7 +61,7 @@ public:
         return _suit;
     }
     //Возвращаем название масти карты
-    string GetSuitName()
+    string GetSuitName() const
     {
         return _suitNames[static_cast<int>(_suit)];
     }
@@ -70,17 +71,26 @@ public:
         return _value;
     }
     //Возвращаем название значения карты
-    string GetValueName()
+    string GetValueName() const
     {
         return _valueNames[static_cast<int>(_value)];
     }
     //Возвращаем очки карты
-    int GetValueScore()
+    int GetValueScore() const
     {
         if (_shirtUp)
             return _valueScore[static_cast<int>(_value)];
         else
             return 0;
+    }
+    //Перегрузка оператора вывода
+    friend ostream& operator<< (ostream& os, const Card& aCard)
+    {
+        if (aCard._shirtUp)
+            os << "\tXX" << endl;
+        else
+            os << "\t\t" << aCard.GetValueName() << " " << aCard.GetSuitName() << " - " << aCard.GetValueScore()  << \
+            " очков" << endl;
     }
 };
 

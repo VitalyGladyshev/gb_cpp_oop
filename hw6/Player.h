@@ -57,6 +57,6 @@ public:
     virtual bool IsHitting() const;
     //Метод переворачивает первую карту дилера
     void FlipFirstCard();
-}
+};
 
 #endif //GB_CPP_OOP_PLAYER_H

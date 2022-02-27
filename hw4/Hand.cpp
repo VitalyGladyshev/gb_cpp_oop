@@ -23,7 +23,7 @@ void Hand::Clear()
 }
 
 //Возвращает сумму очков карт руки
-int Hand::GetTotal()
+int Hand::GetTotal() const
 {
     //Карта рубашкой вверх
     if (!_cards[0]->GetValueScore())
@@ -58,4 +58,16 @@ void Hand::PrintHand()
     for (auto card : _cards)
         cout << "\t\t" << card->GetValueName() << " " << card->GetSuitName() << " - " << card->GetValueScore()  << \
             " очков" << endl;
+}
+
+//Перевернуть карту
+bool Hand::FlipCardNumber(int cardNumber)
+{
+    if (cardNumber < _cards.size())
+    {
+        _cards[cardNumber]->Flip();
+        return true;
+    }
+    else
+        return false;
 }

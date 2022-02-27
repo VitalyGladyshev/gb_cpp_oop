@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+//#include "..\hw4\Card.h"
+//#include "..\hw4\Hand.h"
 #include "Player.h"
 
 //Указывает, что у игрока перебор
@@ -66,18 +68,16 @@ void Player::Push() const
 }
 
 //Конструктор
-House::House(string name, initializer_list<Card*> cards) : GenericPlayer(name, cards)
-{
-
-}
+House::House(string name, initializer_list<Card*> cards) : GenericPlayer(name, cards) {}
 
 //Спрашивает у пользователя, нужна ли ему еще одна карта и возвращает ответ пользователя
 bool House::IsHitting() const
 {
-
+    return (Hand::GetTotal() <= 16);
 }
 //Метод переворачивает первую карту дилера
 void House::FlipFirstCard()
 {
-
+    if (Hand::FlipCardNumber(0))
+        cout << "\tНет карты" << endl;
 }

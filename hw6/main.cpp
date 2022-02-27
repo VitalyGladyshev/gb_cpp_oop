@@ -60,19 +60,4 @@ int main()
     cout << "Задание 2" << endl;
     cout << "\tМанипулятор endll - двойной перевод строки" << endll;
     cout << "\tНовая строка!" << endll;
-
-// Задание 3
-    cout << "Задание 3" << endl;
-
-    cout << endl;
-
-// Задание 4
-    cout << "Задание 4" << endl;
-
-    cout << endl;
-
-// Задание 5
-    cout << "Задание 5" << endl;
-
-    cout << endl;
 }
