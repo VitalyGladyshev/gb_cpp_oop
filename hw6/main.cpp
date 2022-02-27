@@ -27,25 +27,33 @@ int main()
 // Задание 1
     cout << "Задание 1" << endl;
 
-    bool getException;
+    bool notNumber;
     string strValue;
     int number;
 
     do
     {
         cout << "\tВведите целое число: ";
-        cin >> number;
-        if (cin.good())
-            getException = false;
+        cin >> strValue;
+
+        string::const_iterator it = strValue.begin();
+        while (it != strValue.end() && std::isdigit(*it))
+            ++it;
+
+        if (!strValue.empty() && it == strValue.end())
+            notNumber = false;
         else
         {
-            getException = true;
+            notNumber = true;
             cout << "\tДанное значение не является целым числом!" << endl;
         }
-        cin.clear();
-        _flushall();
+
     }
-    while(getException);
+    while(notNumber);
+
+    stringstream toNumber;
+    toNumber << strValue;
+    toNumber >> number;
     cout << "\tВведено целое число: " << number << endl << endl;
 
 // Задание 2
