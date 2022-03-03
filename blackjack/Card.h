@@ -78,10 +78,7 @@ public:
     //Возвращаем очки карты
     int GetValueScore() const
     {
-        if (_shirtUp)
-            return _valueScore[static_cast<int>(_value)];
-        else
-            return 0;
+        return _valueScore[static_cast<int>(_value)];
     }
     //Перегрузка оператора вывода
     friend ostream& operator<< (ostream& os, const Card& aCard)

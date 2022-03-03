@@ -7,8 +7,8 @@
 
 #include<ostream>
 
-#include "..\hw4\Card.h"
-#include "..\hw4\Hand.h"
+#include "Card.h"
+#include "Hand.h"
 
 //BlackJack Обобщенный класс - игрок
 class GenericPlayer : public Hand
@@ -50,7 +50,7 @@ public:
     void Push() const;
 };
 
-//Класс Игрок
+//Класс диллер
 class House : public GenericPlayer
 {
 public:

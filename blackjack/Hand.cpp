@@ -16,9 +16,19 @@ void Hand::Add(Card* pCard)
     _cards.push_back(pCard);
 }
 
+//Деструктор
+Hand::~Hand()
+{
+    for (auto card : _cards)
+        delete card;
+}
+
 //Очищает руку от карт.
 void Hand::Clear()
 {
+    for (auto card : _cards)
+        delete card;
+
     _cards.clear();
 }
 

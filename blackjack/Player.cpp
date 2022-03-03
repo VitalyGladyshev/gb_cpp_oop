@@ -4,8 +4,6 @@
 
 #include <iostream>
 
-//#include "..\hw4\Card.h"
-//#include "..\hw4\Hand.h"
 #include "Player.h"
 
 //Указывает, что у игрока перебор

@@ -17,6 +17,8 @@ private:
 public:
     //Конструктор
     Hand(initializer_list<Card*> cards);
+    //Деструктор
+    ~Hand();
 
     //Добавляет карту в руку.
     void Add(Card* pCard);
