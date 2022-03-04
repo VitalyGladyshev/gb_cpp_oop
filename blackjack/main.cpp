@@ -30,7 +30,7 @@ int main()
             cin >> userAnswer;
             players.push_back(new Player(userAnswer, {}));
 
-            cout << "\tДобавить ещё одного игрока (д/н)?";
+            cout << "\tДобавить ещё одного игрока (д/н)? ";
             cin >> userAnswer;
             cout << endl;
 
@@ -49,7 +49,7 @@ int main()
 
         Game game(players);
 
-        cout << "\tСыграть ещё (д/н)?";
+        cout << "\tСыграть ещё (д/н)? ";
         cin >> userAnswer;
         cout << endl;
 

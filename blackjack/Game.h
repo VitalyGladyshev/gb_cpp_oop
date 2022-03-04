@@ -15,6 +15,10 @@ public:
     //Конструктор
     Game(vector<Player*> players);
 
+    //Распечатать карты всех игроков
+    void printHands();
+
+private:
     //Колода
     Deck _deck;
     //Рука диллера
