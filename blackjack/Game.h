@@ -13,7 +13,7 @@ class Game
 {
 public:
     //Конструктор
-    Game(initializer_list<Player*> Player);
+    Game(vector<Player*> players);
 
     //Колода
     Deck _deck;

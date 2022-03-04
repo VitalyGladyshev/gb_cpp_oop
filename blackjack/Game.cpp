@@ -5,7 +5,21 @@
 #include "Game.h"
 
 //Конструктор
-Game::Game(initializer_list<Player*> Player) : _house("Диллер", {}), _players(Player)
+Game::Game(vector<Player*> players) : _house("Диллер", {}), _players(players)
 {
+    //_deck.
+
+    for (auto player : _players)
+    {
+        player->Add(_deck.Deal());
+        player->Add(_deck.Deal());
+    }
+
+    for (auto player : _players)
+    {
+        cout << "\tИгрок: " << player->GetName() << endl;
+        player->PrintHand();
+        cout << "\tВсего очков: " << player->GetTotal() << endl << endl;
+    }
 
 }

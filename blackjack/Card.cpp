@@ -25,3 +25,44 @@ bool Card::Flip()
     _shirtUp = !_shirtUp;
     return _shirtUp;
 }
+
+//Возвращаем масть карты
+Card::Suit Card::GetSuit()
+{
+    return _suit;
+}
+
+//Возвращаем название масти карты
+string Card::GetSuitName() const
+{
+    return _suitNames[static_cast<int>(_suit)];
+}
+
+//Возвращаем значение карты
+Card::Value Card::GetValue()
+{
+    return _value;
+}
+
+//Возвращаем название значения карты
+string Card::GetValueName() const
+{
+    return _valueNames[static_cast<int>(_value)];
+}
+
+//Возвращаем очки карты
+int Card::GetValueScore() const
+{
+    return _valueScore[static_cast<int>(_value)];
+}
+
+//Перегрузка оператора вывода
+ostream& operator<< (ostream& os, const Card& aCard)
+{
+    if (aCard._shirtUp)
+        os << "\t\tXX" << endl;
+    else
+        os << "\t\t" << aCard.GetValueName() << " " << aCard.GetSuitName() << " - " << aCard.GetValueScore()  << \
+                " очков" << endl;
+    return os;
+}

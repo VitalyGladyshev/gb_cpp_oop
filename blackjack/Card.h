@@ -13,6 +13,8 @@ using namespace std;
 
 //BlackJack Класс - игральная карта
 class Card {
+
+
 public:
     enum class Suit                 //Перечисление: масти карты
     {
@@ -56,40 +58,17 @@ public:
     //Открываем карту
     bool Flip();
     //Возвращаем масть карты
-    Suit GetSuit()
-    {
-        return _suit;
-    }
+    Suit GetSuit();
     //Возвращаем название масти карты
-    string GetSuitName() const
-    {
-        return _suitNames[static_cast<int>(_suit)];
-    }
+    string GetSuitName() const;
     //Возвращаем значение карты
-    Value GetValue()
-    {
-        return _value;
-    }
+    Value GetValue();
     //Возвращаем название значения карты
-    string GetValueName() const
-    {
-        return _valueNames[static_cast<int>(_value)];
-    }
+    string GetValueName() const;
     //Возвращаем очки карты
-    int GetValueScore() const
-    {
-        return _valueScore[static_cast<int>(_value)];
-    }
+    int GetValueScore() const;
     //Перегрузка оператора вывода
-    friend ostream& operator<< (ostream& os, const Card& aCard)
-    {
-        if (aCard._shirtUp)
-            os << "\t\tXX" << endl;
-        else
-            os << "\t\t" << aCard.GetValueName() << " " << aCard.GetSuitName() << " - " << aCard.GetValueScore()  << \
-                " очков" << endl;
-        return os;
-    }
+    friend ostream& operator<< (ostream& os, const Card& aCard);
 };
 
 #endif //GB_CPP_OOP_CARD_H
