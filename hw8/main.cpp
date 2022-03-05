@@ -6,13 +6,20 @@
 
 using namespace std;
 
+template<typename T>
+double div_(T divisible, T divisor)
+{
+    double temp = divisible / divisor;
+    return temp;
+}
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
 // Задание 1
     cout << "Задание 1" << endl;
-
+    cout << "\t56 / 7 = " << div_(56, 7) << endl;
     cout << endl;
 // Задание 2
     cout << "Задание 2" << endl;
